@@ -6,17 +6,6 @@ badoo
 .. image:: https://img.shields.io/pypi/v/badoo.svg
         :target: https://pypi.python.org/pypi/badoo
 
-.. image:: https://img.shields.io/travis/matttsburke@gmail.com/badoo.svg
-        :target: https://travis-ci.com/matttsburke@gmail.com/badoo
-
-.. image:: https://readthedocs.org/projects/badoo/badge/?version=latest
-        :target: https://badoo.readthedocs.io/en/latest/?badge=latest
-        :alt: Documentation Status
-
-
-.. image:: https://pyup.io/repos/github/matttsburke@gmail.com/badoo/shield.svg
-     :target: https://pyup.io/repos/github/matttsburke@gmail.com/badoo/
-     :alt: Updates
 
 
 
@@ -25,7 +14,7 @@ remotely control badoo
 
 
 * Free software: GNU General Public License v3
-* Documentation: https://badoo.readthedocs.io.
+
 
 
 Features
