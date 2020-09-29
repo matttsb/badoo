@@ -17,7 +17,7 @@ setup_requirements = ['pytest-runner', ]
 test_requirements = ['pytest>=3', ]
 setuptools.setup(
     name="badoo-matttsb", # Replace with your own username
-    version="1.1.0",
+    version="1.2.0",
     author="Matt Burke",
     author_email='matttsburke@gmail.com',
     description="Remotely control badoo",
