@@ -60,6 +60,6 @@ setup(
     name='badoo',
     packages=find_packages(exclude=['tests*'],include=['badoo', 'badoo.*']),
     url='https://github.com/matttsb/badoo',
-    version='1.2.0',
+    version='1.3.0',
     zip_safe=False,
 )
