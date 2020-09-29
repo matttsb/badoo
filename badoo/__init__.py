@@ -8,14 +8,15 @@ import re
 
 __author__ = """Matt Burke"""
 __email__ = 'matttsburke@gmail.com'
-__version__ = '1.1.0'
+__version__ = '1.2.0'
 
 next_swipe = datetime.now
 visited_ids = []
 connected = False
 default_login_url = "https://eu1.badoo.com/en/signin/?f=top"
 
-
+def fix_label(s):
+    return s.replace(':', '').strip().replace(' ', '').strip().lower()
 
 def login(chromedriver, username, password, headless=False, login_url=default_login_url):
     global browser
@@ -138,14 +139,23 @@ def get_profile_data(id, like=False):
     profile_data = {}
     source = visit(id, like)
     soup = BeautifulSoup((source), features="lxml")
-    location = soup.find('div', {
+    try:
+        nameandage=soup.title.string.split(" |")[0]
+        profile_data["name"]=nameandage.split(",")[0]
+        profile_data["age"]=nameandage.split(",")[1]
+    except:
+        pass
+    try:
+        location = soup.find('div', {
                          'class': "location-map-wrap__title js-location-label"}).text.rstrip('\n').strip()
+    except:
+        pass
     if location:
         profile_data["location"] = location
     try:
         for pers in soup.find_all('div', {'class': 'personal-info__item'}):
-            label = pers.find(
-                'div', {'class': 'personal-info__label'}).text.rstrip('\n').strip()
+            label = fix_label(pers.find(
+                'div', {'class': 'personal-info__label'}).text.rstrip('\n').strip())
             profile_data[label] = pers.find(
                 'div', {'class': 'personal-info__value'}).text.rstrip('\n').strip()
     except:
