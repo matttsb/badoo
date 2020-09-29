@@ -153,6 +153,13 @@ def get_profile_data(id, like=False):
     if location:
         profile_data["location"] = location
     try:
+        about = soup.find('div', {
+                         'class': "profile-section__txt profile-section__txt--about"}).text.rstrip('\n').strip()
+        profile_data["about"] = about
+    except:
+        pass
+
+    try:
         for pers in soup.find_all('div', {'class': 'personal-info__item'}):
             label = fix_label(pers.find(
                 'div', {'class': 'personal-info__label'}).text.rstrip('\n').strip())

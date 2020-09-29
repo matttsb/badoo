@@ -12,11 +12,9 @@ with open('HISTORY.rst') as history_file:
 
 requirements = ['Click>=7.0', 'selenium','bs4','lxml']
 
-setup_requirements = ['pytest-runner', ]
 
-test_requirements = ['pytest>=3', ]
 setuptools.setup(
-    name="badoo-matttsb", # Replace with your own username
+    name="badoo", # Replace with your own username
     version="1.2.0",
     author="Matt Burke",
     author_email='matttsburke@gmail.com',
@@ -24,7 +22,8 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url='https://github.com/matttsb/badoo',
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(exclude=['tests*']),
+
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
@@ -59,10 +58,7 @@ setup(
     include_package_data=True,
     keywords='badoo',
     name='badoo',
-    packages=find_packages(include=['badoo', 'badoo.*']),
-    setup_requires=setup_requirements,
-    test_suite='tests',
-    tests_require=test_requirements,
+    packages=find_packages(exclude=['tests*'],include=['badoo', 'badoo.*']),
     url='https://github.com/matttsb/badoo',
     version='1.2.0',
     zip_safe=False,
