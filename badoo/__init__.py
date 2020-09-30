@@ -20,6 +20,7 @@ def fix_label(s):
     return s.replace(':', '').strip().replace(' ', '').strip().lower()
 
 def login(chromedriver, username, password, headless=False, login_url=default_login_url):
+    print (__version__)
     global browser
     try:
         chrome_options = webdriver.ChromeOptions()
@@ -47,7 +48,7 @@ def login(chromedriver, username, password, headless=False, login_url=default_lo
         sleep(2)
         browser.find_element_by_name("password").send_keys(password)
         browser.find_element_by_name("post").click()
-        #sleep(5)
+        sleep(5)
         connected = True
     except:
         connected = False
