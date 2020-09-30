@@ -135,9 +135,11 @@ def visit_many(ids, like=False):
             visit(id, like)
 
 
-def get_profile_data(id, like=False):
+def get_profile_data(id, like, screenshot_dir, photo_dir):
     profile_data = {}
     source = visit(id, like)
+    if screenshot_dir:
+        browser.save_screenshot(screenshot_dir+id+".png")        
     soup = BeautifulSoup((source), features="lxml")
     try:
         nameandage=soup.title.string.split(" |")[0]
