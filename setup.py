@@ -10,7 +10,7 @@ long_description=readme
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-requirements = ['Click>=7.0', 'selenium','bs4','lxml']
+requirements = ['Click>=7.0', 'selenium','BeautifulSoup4','lxml']
 
 
 setuptools.setup(

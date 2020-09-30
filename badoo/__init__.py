@@ -4,6 +4,7 @@ from datetime import datetime, timedelta
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as EC
 import re
 
 __author__ = """Matt Burke"""
@@ -34,7 +35,10 @@ def login(chromedriver, username, password, headless=False, login_url=default_lo
         browser.delete_all_cookies()
         browser.set_window_size(1200, 1080)
         browser.get(login_url)
-        sleep(9)
+        wait = WebDriverWait(browserer, 10)
+        element = wait.until(EC.element_to_be_clickable(find_element_by_name("post")))
+
+        #sleep(9)
         # s = browser.page_source
         # pattern = "id=\"password(.*?)\""
         # code=re.search(pattern, s).group(1)
@@ -43,7 +47,7 @@ def login(chromedriver, username, password, headless=False, login_url=default_lo
         sleep(2)
         browser.find_element_by_name("password").send_keys(password)
         browser.find_element_by_name("post").click()
-        sleep(5)
+        #sleep(5)
         connected = True
     except:
         connected = False
