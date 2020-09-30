@@ -1,5 +1,5 @@
 import time
-from BeautifulSoup4 import BeautifulSoup
+from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 from time import sleep
 from selenium import webdriver
