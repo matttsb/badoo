@@ -35,10 +35,10 @@ def login(chromedriver, username, password, headless=False, login_url=default_lo
         browser.delete_all_cookies()
         browser.set_window_size(1200, 1080)
         browser.get(login_url)
-        wait = WebDriverWait(browser, 10)
-        element = wait.until(EC.element_to_be_clickable(find_element_by_name("post")))
+ #       wait = WebDriverWait(browser, 10)
+ #       element = wait.until(EC.element_to_be_clickable(browser.find_element_by_name("post")))
 
-        #sleep(9)
+        sleep(9)
         # s = browser.page_source
         # pattern = "id=\"password(.*?)\""
         # code=re.search(pattern, s).group(1)
