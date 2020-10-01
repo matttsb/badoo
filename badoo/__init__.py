@@ -166,7 +166,7 @@ def get_profile_data(id, like, screenshot_dir, photo_dir):
         pass
   
     try:
-        profile_data['online-status'] = soup.find('div', {
+        profile_data['online_status'] = soup.find('div', {
                          'class': "profile-header__online-status"}).text.rstrip('\n').strip()
     except:
         pass
@@ -184,6 +184,12 @@ def get_profile_data(id, like, screenshot_dir, photo_dir):
                 'div', {'class': 'personal-info__label'}).text.rstrip('\n').strip())
             profile_data[label] = pers.find(
                 'div', {'class': 'personal-info__value'}).text.rstrip('\n').strip()
+    except:
+        pass
+    try:
+        languages = soup.find('div', {
+                         'class': "profile__section js-profile-languages-container"}).text.rstrip('\n').strip()
+        profile_data["languages"] = languages.replace('Languages', '').strip()
     except:
         pass
     try:

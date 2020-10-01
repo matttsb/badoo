@@ -2,6 +2,10 @@
 History
 =======
 
+1.3.4
+
+* Add language to profile dict
+
 1.3.3 (2020-09-30)
 ------------------
 
