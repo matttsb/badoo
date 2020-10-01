@@ -2,9 +2,11 @@
 History
 =======
 
-1.3.4
+1.3.4 (2020-10-01)
+------------------
 
 * Add language to profile dict
+* Correctly handle deleted users
 
 1.3.3 (2020-09-30)
 ------------------
