@@ -1,5 +1,5 @@
 import time
-import PIL
+from PIL import Image
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 from time import sleep
@@ -147,7 +147,7 @@ def get_profile_data(id, like, screenshot_dir, photo_dir):
     if screenshot_dir:
         browser.save_screenshot(screenshot_dir+id+".png")        
     if photo_dir:
-        im = Image.open("screenshot_dir"+id+".png")
+        im = Image.open(screenshot_dir+id+".png")
         region = im.crop((275, 88, 424, 238))
         region.save(photo_dir+id+"pic.png")
 
@@ -165,6 +165,12 @@ def get_profile_data(id, like, screenshot_dir, photo_dir):
         pass
     if location:
         profile_data["location"] = location
+    try:
+        profile_data['online-status'] = soup.find('div', {
+                         'class': "profile-header__online-status"}).text.rstrip('\n').strip()
+    except:
+        pass
+
     try:
         about = soup.find('div', {
                          'class': "profile-section__txt profile-section__txt--about"}).text.rstrip('\n').strip()
