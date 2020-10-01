@@ -1,5 +1,5 @@
 import time
-import Pillow
+import PIL
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 from time import sleep
