@@ -1,4 +1,5 @@
 import time
+import Pillow
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 from time import sleep
@@ -145,6 +146,11 @@ def get_profile_data(id, like, screenshot_dir, photo_dir):
     source = visit(id, like)
     if screenshot_dir:
         browser.save_screenshot(screenshot_dir+id+".png")        
+    if photo_dir:
+        im = Image.open("screenshot_dir"+id+".png")
+        region = im.crop((275, 88, 424, 238))
+        region.save(photo_dir+id+"pic.png")
+
     soup = BeautifulSoup((source), features="lxml")
     try:
         nameandage=soup.title.string.split(" |")[0]
