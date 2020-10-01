@@ -161,10 +161,10 @@ def get_profile_data(id, like, screenshot_dir, photo_dir):
     try:
         location = soup.find('div', {
                          'class': "location-map-wrap__title js-location-label"}).text.rstrip('\n').strip()
+        profile_data["location"] = location
     except:
         pass
-    if location:
-        profile_data["location"] = location
+  
     try:
         profile_data['online-status'] = soup.find('div', {
                          'class': "profile-header__online-status"}).text.rstrip('\n').strip()
@@ -186,12 +186,15 @@ def get_profile_data(id, like, screenshot_dir, photo_dir):
                 'div', {'class': 'personal-info__value'}).text.rstrip('\n').strip()
     except:
         pass
-    interests = []
-    for pers in soup.find_all('span', {'class': 'pill__text'}):
-        interests.append(pers.text.rstrip('\n').strip())
-    if interests:
-        profile_data["interests"] = interests
-    return profile_data
+    try:
+        interests = []
+        for pers in soup.find_all('span', {'class': 'pill__text'}):
+            interests.append(pers.text.rstrip('\n').strip())
+        if interests:
+            profile_data["interests"] = interests
+        return profile_data
+    except:
+        return False
 
 
 def visit(id, like=False):
