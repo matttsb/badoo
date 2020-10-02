@@ -15,7 +15,7 @@ requirements = ['Click>=7.0', 'selenium','BeautifulSoup4','lxml','Pillow']
 
 setuptools.setup(
     name="badoo", # Replace with your own username
-    version="1.3.1",
+    version="1.4",
     author="Matt Burke",
     author_email='matttsburke@gmail.com',
     description="Remotely control badoo",
@@ -60,6 +60,6 @@ setup(
     name='badoo',
     packages=find_packages(exclude=['tests*'],include=['badoo', 'badoo.*']),
     url='https://github.com/matttsb/badoo',
-    version='version='1.4.0'',
+    version='1.4.0',
     zip_safe=False,
 )
