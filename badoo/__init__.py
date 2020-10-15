@@ -10,7 +10,7 @@ import re
 
 __author__ = """Matt Burke"""
 __email__ = 'matttsburke@gmail.com'
-__version__ = '1.5.0'
+__version__ = '1.6.0'
 
 next_swipe = datetime.now
 visited_ids = []
