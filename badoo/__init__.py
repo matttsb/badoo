@@ -16,6 +16,7 @@ next_swipe = datetime.now
 visited_ids = []
 connected = False
 default_login_url = "https://eu1.badoo.com/en/signin/?f=top"
+browser = None
 
 def fix_label(s):
     return s.replace(':', '').strip().replace(' ', '').strip().lower()
@@ -30,7 +31,8 @@ def login(chromedriver, username, password, headless=False, login_url=default_lo
             chrome_options.add_argument("--headless")
         chrome_options.add_argument("--no-sandbox")
         browser = webdriver.Chrome(chromedriver, options=chrome_options)
-    except:
+    except Exception as e: 
+        print (e)
         return False
 
     try:
@@ -57,7 +59,7 @@ def login(chromedriver, username, password, headless=False, login_url=default_lo
 
 
 def browser_get(url):
-    global next_swipe
+    global browser,next_swipe
     if browser.get(url):
         sleep(10)
         # Don't 'like' anyone for 2 hours after you have run out of 'likes'
